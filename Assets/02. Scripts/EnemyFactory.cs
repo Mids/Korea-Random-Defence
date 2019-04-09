@@ -30,18 +30,19 @@ namespace KRD
 		// Update is called once per frame
 		void Update()
 		{
+			// Spawn enemies
 			if (!IsSpawning) return;
-
 			SpawningCooldown += Time.deltaTime;
 			if (SpawningCooldown > SpawningTime)
 			{
-				Debug.Log("Spawning");
 				SpawningCooldown -= SpawningTime;
 				Spawn();
 
 				if (CurrentUnitCount >= UnitCount)
 				{
 					// TODO: Game Over
+					Debug.Log("Game Over");
+					IsSpawning = false;
 				}
 			}
 		}
@@ -57,17 +58,28 @@ namespace KRD
 
 		public void Spawn()
 		{
+			// Find inactive enemy
+			int loopCount = 0;
+			do
+			{
+				// The enemy is active
+				if (++CurrentEnemyNum >= UnitCount)
+				{
+					CurrentEnemyNum = 0;
+
+					// Prevent infinite loop
+					if (++loopCount > 1)
+					{
+						Debug.Log("ERROR : All Enemies are active");
+						return;
+					}
+				}
+			} while (Enemies[CurrentEnemyNum].IsActive);
+
 			Enemy curEnemy = Enemies[CurrentEnemyNum];
 			curEnemy.CopyFrom(CurrentEnemy);
 			curEnemy.transform.localPosition = SpawningPosition;
 			curEnemy.Activate();
-
-			// Reset Count
-			CurrentEnemyNum++;
-			if (CurrentEnemyNum >= UnitCount)
-			{
-				CurrentEnemyNum = 0;
-			}
 		}
 	}
 }
