@@ -2,42 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+namespace KRD
 {
-	private RTSManager _rtsManager;
-	private Projector _selectionCircle;
-	public bool IsSelected;
-
-	// Start is called before the first frame update
-	void Start()
+	public class Character : MonoBehaviour
 	{
-		_rtsManager = GameObject.FindGameObjectWithTag("RTSManager").GetComponent<RTSManager>();
-		_selectionCircle = GetComponentInChildren<Projector>();
-		Deselect();
-	}
+		private RTSManager _rtsManager;
+		private Projector _selectionCircle;
+		public bool IsSelected;
 
-	// Update is called once per frame
-	void Update()
-	{
-		if (_rtsManager.IsWithinSelectionBounds(gameObject))
+		// Start is called before the first frame update
+		void Start()
 		{
-			Select();
-		}
-		else
-		{
+			_rtsManager = GameObject.FindGameObjectWithTag("RTSManager").GetComponent<RTSManager>();
+			_selectionCircle = GetComponentInChildren<Projector>();
 			Deselect();
 		}
-	}
 
-	public void Select()
-	{
-		IsSelected = true;
-		_selectionCircle.enabled = true;
-	}
+		// Update is called once per frame
+		void Update()
+		{
+			if (_rtsManager.IsWithinSelectionBounds(gameObject))
+			{
+				Select();
+			}
+			else
+			{
+				Deselect();
+			}
+		}
 
-	public void Deselect()
-	{
-		IsSelected = false;
-		_selectionCircle.enabled = false;
+		public void Select()
+		{
+			IsSelected = true;
+			_selectionCircle.enabled = true;
+		}
+
+		public void Deselect()
+		{
+			IsSelected = false;
+			_selectionCircle.enabled = false;
+		}
 	}
 }
