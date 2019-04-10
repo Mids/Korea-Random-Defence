@@ -35,7 +35,8 @@ namespace KRD
 			SpawningCooldown += Time.deltaTime;
 			if (SpawningCooldown > SpawningTime)
 			{
-				SpawningCooldown -= SpawningTime;
+				//TODO:SpawningCooldown %= SpawningTime;
+				SpawningCooldown = 0;
 				Spawn();
 
 				if (CurrentUnitCount >= UnitCount)

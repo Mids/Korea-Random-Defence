@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace KRD
 {
@@ -88,13 +87,12 @@ namespace KRD
 		{
 			foreach (var character in SelectedCharacters)
 			{
-				var nav = character.GetComponent<NavMeshAgent>();
 				var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
 				if (Physics.Raycast(ray, out var hit, 1000L, LayerMask.GetMask("Ground")))
 				{
 					// TODO: Keep the formation
-					nav.destination = hit.point;
+					character.Move(hit.point);
 				}
 			}
 		}
