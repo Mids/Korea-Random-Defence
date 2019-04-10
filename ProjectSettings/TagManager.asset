@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RTSManager
   - SelectionCircle
+  - Enemy
   layers:
   - Default
   - TransparentFX

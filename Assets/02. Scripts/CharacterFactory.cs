@@ -91,7 +91,7 @@ namespace KRD
 				var nav = character.GetComponent<NavMeshAgent>();
 				var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-				if (Physics.Raycast(ray, out var hit))
+				if (Physics.Raycast(ray, out var hit, 1000L, LayerMask.GetMask("Ground")))
 				{
 					// TODO: Keep the formation
 					nav.destination = hit.point;

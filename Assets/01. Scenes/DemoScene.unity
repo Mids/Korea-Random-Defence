@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnableCharacters:
-  - {fileID: 4333256194876630189, guid: 23b34d2ccff8ffe4884b66c35fedaaff, type: 3}
+  - {fileID: 8298607015580777623, guid: 23b34d2ccff8ffe4884b66c35fedaaff, type: 3}
   CurrentCharacters: []
   SelectedCharacters: []
   IsTargeting: 0
