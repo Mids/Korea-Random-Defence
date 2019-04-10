@@ -11,17 +11,28 @@ namespace KRD
 		private RTSManager _rtsManager;
 		public List<Character> CurrentCharacters = new List<Character>();
 		public List<Character> SelectedCharacters = new List<Character>();
+		public bool IsTargeting;
+
+		public Texture2D Crosshair;
+		public Texture2D DefaultCursor;
 
 		// Start is called before the first frame update
 		void Start()
 		{
 			_rtsManager = GameObject.FindGameObjectWithTag("RTSManager").GetComponent<RTSManager>();
+			Cursor.SetCursor(DefaultCursor, Vector2.zero, CursorMode.Auto);
+
 			CurrentCharacters.Add(Instantiate(SpawnableCharacters[0], transform));
 		}
 
 		// Update is called once per frame
 		void Update()
 		{
+			if (!IsTargeting)
+			{
+				_rtsManager.CheckSelecting();
+			}
+
 			// Select units if player is selecting
 			if (_rtsManager.IsSelecting)
 			{
@@ -29,11 +40,45 @@ namespace KRD
 				return;
 			}
 
+			// If there is no selected characters, skip below actions
+			if (SelectedCharacters.Count == 0)
+				return;
+
 			// If we press the right mouse button, let the characters go
-			if (Input.GetMouseButton(1))
+			if (Input.GetMouseButtonDown(1))
 			{
-				MoveFormation();
+				if (IsTargeting)
+				{
+					SetTargeting(false);
+				}
+				else
+				{
+					MoveFormation();
+				}
 			}
+
+			// If we press a, change cursor to target image
+			if (Input.GetButtonDown("Attack"))
+			{
+				// Change cursor
+				SetTargeting(true);
+			}
+
+			// If we press the left mouse button
+			if (Input.GetMouseButtonDown(0))
+			{
+				if (IsTargeting)
+				{
+					SetTargeting(false);
+					// TODO: Look for target
+				}
+			}
+		}
+
+		public void SetTargeting(bool b)
+		{
+			IsTargeting = b;
+			Cursor.SetCursor(b ? Crosshair : DefaultCursor, Vector2.zero, CursorMode.Auto);
 		}
 
 		/// <summary>

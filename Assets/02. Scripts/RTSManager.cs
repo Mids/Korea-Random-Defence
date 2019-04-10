@@ -11,6 +11,10 @@ namespace KRD
 
 		void Update()
 		{
+		}
+
+		public void CheckSelecting()
+		{
 			// If we press the left mouse button, save mouse location and begin selection
 			if (Input.GetMouseButtonDown(0))
 			{

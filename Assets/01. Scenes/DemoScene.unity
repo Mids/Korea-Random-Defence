@@ -388,6 +388,9 @@ MonoBehaviour:
   - {fileID: 4333256194876630189, guid: 23b34d2ccff8ffe4884b66c35fedaaff, type: 3}
   CurrentCharacters: []
   SelectedCharacters: []
+  IsTargeting: 0
+  Crosshair: {fileID: 2800000, guid: 272684fd9c7e2c64483c560e9a196057, type: 3}
+  DefaultCursor: {fileID: 2800000, guid: 16bddb277bfbb6e4b91857f617a230c3, type: 3}
 --- !u!4 &1277792994
 Transform:
   m_ObjectHideFlags: 0
