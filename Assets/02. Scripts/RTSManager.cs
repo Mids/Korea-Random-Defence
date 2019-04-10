@@ -6,7 +6,7 @@ namespace KRD
 {
 	public class RTSManager : MonoBehaviour
 	{
-		bool isSelecting = false;
+		public bool IsSelecting = false;
 		Vector3 mousePosition1;
 
 		void Update()
@@ -14,18 +14,18 @@ namespace KRD
 			// If we press the left mouse button, save mouse location and begin selection
 			if (Input.GetMouseButtonDown(0))
 			{
-				isSelecting = true;
+				IsSelecting = true;
 				mousePosition1 = Input.mousePosition;
 			}
 
 			// If we let go of the left mouse button, end selection
 			if (Input.GetMouseButtonUp(0))
-				isSelecting = false;
+				IsSelecting = false;
 		}
 
 		void OnGUI()
 		{
-			if (isSelecting)
+			if (IsSelecting)
 			{
 				// Create a rect from both mouse positions
 				var rect = RTSTool.GetScreenRect(mousePosition1, Input.mousePosition);
@@ -41,7 +41,7 @@ namespace KRD
 		/// <returns></returns>
 		public bool IsWithinSelectionBounds(GameObject gameObject)
 		{
-			if (!isSelecting)
+			if (!IsSelecting)
 				return false;
 
 			var camera = Camera.main;
