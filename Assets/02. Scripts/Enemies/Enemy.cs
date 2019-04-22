@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace KRD
 {
@@ -10,6 +11,8 @@ namespace KRD
 		public float MoveSpeed = 0.1f;
 		public bool IsActive = false;
 
+		public Slider HPSlider;
+
 		/// <summary>
 		/// Initialize Enemy
 		/// </summary>
@@ -20,6 +23,8 @@ namespace KRD
 			Level = level;
 			CurrentHP = HP;
 			MaxHP = HP;
+			HPSlider.maxValue = MaxHP;
+			HPSlider.value = CurrentHP;
 			SetDirection(Direction.South);
 		}
 
@@ -104,6 +109,8 @@ namespace KRD
 				Inactivate();
 				return true;
 			}
+
+			HPSlider.value = CurrentHP;
 
 			return false;
 		}

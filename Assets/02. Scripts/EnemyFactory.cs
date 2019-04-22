@@ -10,7 +10,7 @@ namespace KRD
 		public float SpawningTime = 1.0f;
 		public float SpawningCooldown;
 		public int CurrentUnitCount = 0;
-		public readonly Vector3 SpawningPosition = new Vector3(-40, 0, 40);
+		public readonly Vector3 SpawningPosition = new Vector3(-40, 1, 40);
 
 		// Enemy
 		public Enemy CurrentEnemy;
