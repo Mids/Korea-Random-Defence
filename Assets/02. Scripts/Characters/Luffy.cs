@@ -11,6 +11,7 @@ namespace KRD
 		protected override void Start()
 		{
 			base.Start();
+			AttackDamage = 25;
 		}
 
 

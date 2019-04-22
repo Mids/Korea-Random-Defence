@@ -23,7 +23,7 @@ namespace KRD
 		{
 			// TODO: Set First Enemy
 //			CurrentEnemy = Instantiate();
-			CurrentEnemy.Init(1, 10);
+			CurrentEnemy.Init(1, 50);
 			InstantiateEnemies();
 		}
 

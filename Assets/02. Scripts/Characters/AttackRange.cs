@@ -22,7 +22,18 @@ namespace KRD
 			_enemiesInRange = new List<Enemy>();
 		}
 
-		void OnTriggerEnter(Collider collider)
+		private void Update()
+		{
+			for (int i = _enemiesInRange.Count - 1; i >= 0; i--)
+			{
+				if (!_enemiesInRange[i].IsActive)
+				{
+					_enemiesInRange.RemoveAt(i);
+				}
+			}
+		}
+
+        void OnTriggerEnter(Collider collider)
 		{
 			if (collider.gameObject.tag == "Enemy")
 			{
@@ -41,6 +52,16 @@ namespace KRD
 		public List<Enemy> GetEnemiesInRange()
 		{
 			return _enemiesInRange;
+		}
+
+		public Enemy GetEnemyIn(int i)
+		{
+			return _enemiesInRange[i];
+		}
+
+		public bool Contains(Enemy enemy)
+		{
+			return _enemiesInRange.Contains(enemy);
 		}
 	}
 }

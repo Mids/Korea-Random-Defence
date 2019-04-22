@@ -89,5 +89,23 @@ namespace KRD
 
 			return false;
 		}
+
+		/// <summary>
+        /// Take damage and die if hp is below 0
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <returns>True if died</returns>
+		public bool TakeDamage(int damage)
+		{
+			CurrentHP -= damage;
+			if (CurrentHP <= 0)
+			{
+				//Die
+				Inactivate();
+				return true;
+			}
+
+			return false;
+		}
 	}
 }
