@@ -1,3 +1,3 @@
 # Korea-Random-Defence
 
-EditorVersion: 2018.3.7f1
+EditorVersion: 2019.1.0f2

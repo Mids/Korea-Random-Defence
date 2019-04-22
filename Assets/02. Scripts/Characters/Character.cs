@@ -15,9 +15,12 @@ namespace KRD
 
 		public int AttackDamage;
 		public readonly float AttackSpeed = 0.8f;
-		private float AttackCooldown = 0.8f;
+		private float _attackCooldown = 0.8f;
 		private NavMeshAgent _nav;
-		private Enemy CurrentTarget = null;
+		private Enemy _currentTarget = null;
+
+		public GameObject BulletPrefab;
+		public Transform FirePoint;
 
 		// Start is called before the first frame update
 		protected virtual void Start()
@@ -33,7 +36,7 @@ namespace KRD
 		// Update is called once per frame
 		protected virtual void Update()
 		{
-			AttackCooldown += Time.deltaTime;
+			_attackCooldown += Time.deltaTime;
 			if (IsMoving)
 			{
 				if (_nav.remainingDistance <= _nav.stoppingDistance)
@@ -44,14 +47,14 @@ namespace KRD
 			}
 			else if (IsAttacking && Range.GetEnemiesInRange().Count > 0)
 			{
-				if (AttackCooldown > AttackSpeed)
+				if (_attackCooldown > AttackSpeed)
 				{
 					//Time to Attack
                     //TODO: AttackCooldown %= AttackSpeed;
-                    AttackCooldown = 0;
+                    _attackCooldown = 0;
 
 					Debug.Log("Choose whom to attack");
-                    if (CurrentTarget == null || !Range.Contains(CurrentTarget))
+                    if (_currentTarget == null || !Range.Contains(_currentTarget))
                     {
 	                    // Get Closest Enemy in range and set to new target
 	                    int count = Range.GetEnemiesInRange().Count;
@@ -86,12 +89,12 @@ namespace KRD
                         }
                         else
                         {
-                            CurrentTarget = Range.GetEnemyIn(closestEnemyIndex);
+                            _currentTarget = Range.GetEnemyIn(closestEnemyIndex);
                         }
                     }
 
 
-					Attack(CurrentTarget);
+					Attack(_currentTarget);
 				}
 
 				return;
@@ -136,7 +139,22 @@ namespace KRD
 
 			//TODO: Attack motion
 
+			Shoot();
 			target.TakeDamage(AttackDamage);
+		}
+
+		void Shoot()
+		{
+			var bulletGameObject = Instantiate(BulletPrefab, FirePoint.position, FirePoint.rotation);
+			Bullet bullet = bulletGameObject.GetComponent<Bullet>();
+
+			if (bullet == null)
+			{
+				Debug.Log("Can't find a bullet prefab");
+				return;
+			}
+
+			bullet.Seek(_currentTarget.transform);
 		}
 	}
 }
