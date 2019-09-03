@@ -70,6 +70,7 @@ namespace KRD
 				{
 					SetTargeting(false);
 					// TODO: Look for target
+					AttackFormation();
 				}
 			}
 		}
@@ -81,7 +82,7 @@ namespace KRD
 		}
 
 		/// <summary>
-		/// Move selected characters as a formation
+		/// Selected characters move as a formation
 		/// </summary>
 		void MoveFormation()
 		{
@@ -93,6 +94,28 @@ namespace KRD
 				{
 					// TODO: Keep the formation
 					character.Move(hit.point);
+					character.IsAttacking = false;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Selected characters attack as a formation
+		/// </summary>
+		void AttackFormation()
+		{
+			foreach (var character in SelectedCharacters)
+			{
+				var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+				if (Physics.Raycast(ray, out var hit, 1000L, LayerMask.GetMask("Ground")))
+				{
+					// TODO: Keep the formation
+					character.IsAttacking = true;
+					if (!character.CheckEnemyInRange())
+					{
+						character.Move(hit.point);
+					}
 				}
 			}
 		}

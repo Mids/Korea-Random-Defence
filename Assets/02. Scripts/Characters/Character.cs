@@ -43,58 +43,20 @@ namespace KRD
 				{
 					// When arrived to destination.
 					IsMoving = false;
+					IsAttacking = true;
 				}
 			}
-			else if (IsAttacking && Range.GetEnemiesInRange().Count > 0)
+
+			if (IsAttacking)
 			{
-				if (_attackCooldown > AttackSpeed)
+				if (CheckEnemyInRange())
 				{
-					//Time to Attack
-                    //TODO: AttackCooldown %= AttackSpeed;
-                    _attackCooldown = 0;
-
-					Debug.Log("Choose whom to attack");
-                    if (_currentTarget == null || !Range.Contains(_currentTarget))
-                    {
-	                    // Get Closest Enemy in range and set to new target
-	                    int count = Range.GetEnemiesInRange().Count;
-	                    int closestEnemyIndex = -1;
-	                    float distanceToClosest = 0f;
-
-	                    for (int i = 0; i < count; i++)
-	                    {
-		                    Enemy enemy = Range.GetEnemyIn(i);
-		                    Vector3 enemyPos = Range.GetEnemyIn(i).transform.position;
-		                    Vector3 myPos = transform.position;
-
-		                    if (closestEnemyIndex == -1)
-		                    {
-			                    closestEnemyIndex = i;
-			                    distanceToClosest = Vector3.Distance(myPos, enemyPos);
-		                    }
-		                    else
-		                    {
-			                    // Change Closest Enemy to current enemy
-			                    float curDistance = Vector3.Distance(myPos, enemyPos);
-			                    if (curDistance < distanceToClosest)
-			                    {
-				                    closestEnemyIndex = i;
-				                    distanceToClosest = curDistance;
-			                    }
-		                    }
-                        }
-                        if (closestEnemyIndex == -1)
-                        {
-                            Debug.Log("WTF?");
-                        }
-                        else
-                        {
-                            _currentTarget = Range.GetEnemyIn(closestEnemyIndex);
-                        }
-                    }
-
-
-					Attack(_currentTarget);
+					AttackProcess();
+					IsMoving = false;
+				}
+				else
+				{
+					IsMoving = true;
 				}
 
 				return;
@@ -129,9 +91,9 @@ namespace KRD
 		{
 		}
 
-		public void Attack(Enemy target)
+		public void AttackTarget(Enemy target)
 		{
-			Debug.Log("Attack!");
+//			Debug.Log("Attack!");
 			if (_nav.isStopped == false)
 			{
 				_nav.isStopped = true;
@@ -140,6 +102,60 @@ namespace KRD
 			//TODO: Attack motion
 
 			Shoot();
+		}
+
+		private void AttackProcess()
+		{
+			if (_attackCooldown > AttackSpeed)
+			{
+				//Time to Attack
+				//TODO: AttackCooldown %= AttackSpeed;
+				_attackCooldown = 0;
+
+				//					Debug.Log("Choose whom to attack");
+				if (_currentTarget == null || !Range.Contains(_currentTarget))
+				{
+					// Get Closest Enemy in range and set to new target
+					int count = Range.GetEnemiesInRange().Count;
+					int closestEnemyIndex = -1;
+					float distanceToClosest = 0f;
+
+					for (int i = 0; i < count; i++)
+					{
+						Enemy enemy = Range.GetEnemyIn(i);
+						Vector3 enemyPos = Range.GetEnemyIn(i).transform.position;
+						Vector3 myPos = transform.position;
+
+						if (closestEnemyIndex == -1)
+						{
+							closestEnemyIndex = i;
+							distanceToClosest = Vector3.Distance(myPos, enemyPos);
+						}
+						else
+						{
+							// Change Closest Enemy to current enemy
+							float curDistance = Vector3.Distance(myPos, enemyPos);
+							if (curDistance < distanceToClosest)
+							{
+								closestEnemyIndex = i;
+								distanceToClosest = curDistance;
+							}
+						}
+					}
+
+					if (closestEnemyIndex == -1)
+					{
+						Debug.Log("WTF?");
+					}
+					else
+					{
+						_currentTarget = Range.GetEnemyIn(closestEnemyIndex);
+					}
+				}
+
+
+				AttackTarget(_currentTarget);
+			}
 		}
 
 		void Shoot()
@@ -155,6 +171,11 @@ namespace KRD
 
 			bullet.Damage = AttackDamage;
 			bullet.Seek(_currentTarget.transform);
+		}
+
+		public bool CheckEnemyInRange()
+		{
+			return Range.GetEnemiesInRange().Count > 0;
 		}
 	}
 }
