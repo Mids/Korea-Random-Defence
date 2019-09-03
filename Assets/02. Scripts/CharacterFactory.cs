@@ -20,8 +20,6 @@ namespace KRD
 		{
 			_rtsManager = GameObject.FindGameObjectWithTag("RTSManager").GetComponent<RTSManager>();
 			Cursor.SetCursor(DefaultCursor, Vector2.zero, CursorMode.Auto);
-
-			CurrentCharacters.Add(Instantiate(SpawnableCharacters[0], transform));
 		}
 
 		// Update is called once per frame
@@ -150,6 +148,12 @@ namespace KRD
 			{
 				character.Deselect();
 			}
+		}
+
+		public void SpawnRandomCharacter()
+		{
+			var randomNumber = Random.Range(0, SpawnableCharacters.Length);
+			CurrentCharacters.Add(Instantiate(SpawnableCharacters[randomNumber], transform));
 		}
 	}
 }
