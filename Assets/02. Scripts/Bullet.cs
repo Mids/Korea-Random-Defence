@@ -8,39 +8,43 @@ namespace KRD
 {
 	public class Bullet : MonoBehaviour
 	{
-		private Transform _target;
+		private Transform _targetTransform;
+		private Enemy _target;
 
-		public float speed = 70f;
+		public int Damage;
+		public float Speed = 70f;
 
 		public void Seek(Transform target)
 		{
-			_target = target;
+			_targetTransform = target;
+			_target = _targetTransform.GetComponent<Enemy>();
 		}
 
 		// Update is called once per frame
 		void Update()
 		{
-			if (_target == null)
+			if (_targetTransform == null)
 			{
 				Destroy(gameObject);
 				return;
 			}
 
-			Vector3 dir = _target.position - transform.position;
-			float distanceThisFrame = speed * Time.deltaTime;
+			Vector3 dir = _targetTransform.position - transform.position;
+			float distanceThisFrame = Speed * Time.deltaTime;
 
 			if (dir.magnitude <= distanceThisFrame)
 			{
 				HitTarget();
+				Destroy(gameObject);
 				return;
 			}
 
-			transform.Translate(dir.normalized * distanceThisFrame, Space.World );
+			transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 		}
 
 		void HitTarget()
 		{
-
+			_target.TakeDamage(Damage);
 		}
 	}
 }

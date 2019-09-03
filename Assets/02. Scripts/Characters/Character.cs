@@ -140,7 +140,6 @@ namespace KRD
 			//TODO: Attack motion
 
 			Shoot();
-			target.TakeDamage(AttackDamage);
 		}
 
 		void Shoot()
@@ -154,6 +153,7 @@ namespace KRD
 				return;
 			}
 
+			bullet.Damage = AttackDamage;
 			bullet.Seek(_currentTarget.transform);
 		}
 	}
