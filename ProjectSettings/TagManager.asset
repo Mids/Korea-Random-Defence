@@ -7,6 +7,15 @@ TagManager:
   - RTSManager
   - SelectionCircle
   - Enemy
+  - Luffy
+  - Zoro
+  - Nami
+  - Usopp
+  - Sanji
+  - Chopper
+  - MarinSword
+  - MarinGun
+  - Buggy
   layers:
   - Default
   - TransparentFX
