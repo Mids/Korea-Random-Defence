@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8298607015580777623}
   m_Layer: 0
   m_Name: Luffy
-  m_TagString: Untagged
+  m_TagString: Luffy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,6 +136,7 @@ MonoBehaviour:
   IsAttacking: 0
   IsMoving: 0
   AttackDamage: 0
+  AttackSpeed: 0.8
   BulletPrefab: {fileID: 4734879832706682267, guid: aa1a47900ac032b4aa6ae76cbf129911,
     type: 3}
   FirePoint: {fileID: 2171553746244740033}
