@@ -35,7 +35,7 @@ namespace KRD
 		{
 			IsActive = true;
 			gameObject.SetActive(IsActive);
-        }
+		}
 
 		/// <summary>
 		/// Inactivate enemy
@@ -44,7 +44,7 @@ namespace KRD
 		{
 			IsActive = false;
 			gameObject.SetActive(IsActive);
-        }
+		}
 
 		// Update is called once per frame
 		void Update()
@@ -57,6 +57,11 @@ namespace KRD
 			// Turn counterclockwise
 			if (CheckTurnPosition())
 				CurDirection = DirectionTool.CounterClockwise(CurDirection);
+
+			if (CurrentHP < 0)
+			{
+				Destroy(gameObject);
+			}
 		}
 
 		/// <summary>
@@ -96,10 +101,10 @@ namespace KRD
 		}
 
 		/// <summary>
-        /// Take damage and die if hp is below 0
-        /// </summary>
-        /// <param name="damage"></param>
-        /// <returns>True if died</returns>
+		/// Take damage and die if hp is below 0
+		/// </summary>
+		/// <param name="damage"></param>
+		/// <returns>True if died</returns>
 		public bool TakeDamage(int damage)
 		{
 			CurrentHP -= damage;

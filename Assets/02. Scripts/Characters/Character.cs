@@ -14,7 +14,7 @@ namespace KRD
 		public bool IsMoving;
 
 		public int AttackDamage;
-		public readonly float AttackSpeed = 0.8f;
+		public float AttackSpeed = 0.8f;
 		private float _attackCooldown = 0.8f;
 		private NavMeshAgent _nav;
 		private Enemy _currentTarget = null;
