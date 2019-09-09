@@ -8,20 +8,18 @@ namespace KRD
 		//about enemy count parameters
 		public Text EnemyCountText;
 		public Text RoundTimeText;
-		public Enemy[] RoundEnemy;
+		public Enemy[] RoundEnemy = new Enemy[_maxGameRound];
 		private GameObject[] _enemyObject;
 		private int _enemyCount;
 		private float _roundTime;
 		private int _gameRound;
+		private static int _maxGameRound = 40;
 		private int _limitEnemy = 80;
 
-		private int[] _enemyHP =
-		{
-			240, 340, 460, 600, 760, 1020, 1300, 1720, 2040, 116000,
-			2200, 2800, 3580, 4480, 7743, 10614, 12905, 14413, 16240, 664000,
-			18850, 20880, 27260, 36830, 45965, 54810, 67425, 75400, 92800, 4880000,
-			436000, 536000, 640000, 722400, 870960, 993600, 1107200, 11160000, 8, 10000000
-		};
+		public static float EnemyHPMultiple = 1.3f;
+		public static float EnemyHPInitialRound = 240f;
+
+		private int[] _enemyHP = new int[_maxGameRound];
 
 		// Spawning
 		public bool IsSpawning = true;
@@ -43,6 +41,18 @@ namespace KRD
 			_enemyCount = 0;
 			_roundTime = 80;
 			_gameRound = 0;
+
+			//calcuate each round enemy HP
+			for (int i = 0; i <= _maxGameRound - 1; i++)
+			{
+				float calcuatedHP = EnemyHPInitialRound * Mathf.Pow(EnemyHPMultiple, i);
+				_enemyHP[i] = (int) calcuatedHP;
+
+				if (i > 0 && i % 9 == 0)
+				{
+					_enemyHP[i] = (int) calcuatedHP * 100;
+				}
+			}
 
 			CurrentEnemy = RoundEnemy[0];
 			// TODO: Set First Enemy
@@ -99,11 +109,8 @@ namespace KRD
 
 		private void InstantiateBoss()
 		{
-			for (int i = 0; i < UnitCount; i++)
-			{
-				var enemy = Instantiate(CurrentEnemy, Vector3.zero, Quaternion.identity, transform);
-				Enemies[i] = enemy;
-			}
+			var enemy = Instantiate(CurrentEnemy, Vector3.zero, Quaternion.identity, transform);
+			Enemies[0] = enemy;
 		}
 
 		public void Spawn()
@@ -147,14 +154,12 @@ namespace KRD
 			_roundTime = 80;
 			_gameRound += 1;
 			IsSpawning = true;
-			Debug.Log(_gameRound);
 
 			if (_gameRound % 9 == 0)
 			{
 				CurrentEnemy = RoundEnemy[_gameRound];
 				CurrentEnemy.Init(_gameRound, _enemyHP[_gameRound]);
 				CurrentEnemyNum = 0;
-				UnitCount = 1;
 				InstantiateBoss();
 			}
 			else
