@@ -164,6 +164,44 @@ namespace KRD
 		{
 			var randomNumber = Random.Range(0, SpawnableCharacters.Length);
 			CurrentCharacters.Add(Instantiate(SpawnableCharacters[randomNumber], transform));
+
+			// Sort Characters
+			CurrentCharacters.Sort(SortByCharacterOrder);
+		}
+
+		private int SortByCharacterOrder(Character c1, Character c2)
+		{
+			int i1 = -1, i2 = -1;
+
+			// Same Characters
+			if (c1.CompareTag(c2.tag))
+			{
+				return 0;
+			}
+
+			// Find index of the characters
+			for (int i = 0; i < SpawnableCharacters.Length; i++)
+			{
+				if (SpawnableCharacters[i].CompareTag(c1.tag))
+				{
+					i1 = i;
+				}
+				else if (SpawnableCharacters[i].CompareTag(c2.tag))
+				{
+					i2 = i;
+				}
+				else if (i1 != -1 && i2 != -1)
+				{
+					break;
+				}
+			}
+
+			if (i1 == -1 || i2 == -1)
+			{
+				print("Something Wrong in comparing index");
+			}
+
+			return i1.CompareTo(i2);
 		}
 	}
 }
