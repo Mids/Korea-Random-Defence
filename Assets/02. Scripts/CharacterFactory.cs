@@ -43,11 +43,12 @@ namespace KRD
 						CheckSelection();
 					}
 				}
-                _rtsManager.CheckSelecting();
+
+				_rtsManager.CheckSelecting();
 			}
 
-            // If there is no selected characters, skip below actions
-            if (SelectedCharacters.Count == 0)
+			// If there is no selected characters, skip below actions
+			if (SelectedCharacters.Count == 0)
 				return;
 
 			// If we press the right mouse button, let the characters go
