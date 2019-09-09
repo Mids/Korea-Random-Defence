@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7859381893641042933d1235d85c6ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnableCharacters:
+  SpawnableCommonCharacters:
   - {fileID: 8298607015580777623, guid: 23b34d2ccff8ffe4884b66c35fedaaff, type: 3}
   - {fileID: 4140418219326538767, guid: d024bcb68eec5b74e944cc89f50a3524, type: 3}
   - {fileID: 5253558404196237036, guid: acc6a92f80412bd47a8acff8e026343b, type: 3}
@@ -449,6 +449,11 @@ MonoBehaviour:
   - {fileID: 5201770059658902658, guid: fcfca821b7e189542af1920b5624ea8a, type: 3}
   - {fileID: 2777311104257262956, guid: 6a686001918d21c4c850e322251fea9f, type: 3}
   - {fileID: 1717315277459485056, guid: 0192e35979e5dcb4bb0d0db6d4ce23bf, type: 3}
+  SpawnableUncommonCharacters:
+  - {fileID: 8876992391806596664, guid: 12267a9222f8dbe4791901bd1137daa2, type: 3}
+  SpawnableSpecialCharacters: []
+  SpawnableRareCharacters: []
+  SpawnableLegendaryCharacters: []
   CurrentCharacters: []
   SelectedCharacters: []
   IsTargeting: 0

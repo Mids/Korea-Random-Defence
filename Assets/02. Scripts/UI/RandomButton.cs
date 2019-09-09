@@ -39,7 +39,7 @@ namespace KRD
 			if (ChanceLeft > 0)
 			{
 				ChanceLeft--;
-				_characterFactory.SpawnRandomCharacter();
+				_characterFactory.SpawnRandomCommonCharacter();
 				ChangeButtonText();
 			}
 		}

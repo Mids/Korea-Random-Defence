@@ -8,7 +8,12 @@ namespace KRD
 {
 	public class CharacterFactory : MonoBehaviour
 	{
-		public Character[] SpawnableCharacters;
+		public Character[] SpawnableCommonCharacters;
+		public Character[] SpawnableUncommonCharacters;
+		public Character[] SpawnableSpecialCharacters;
+		public Character[] SpawnableRareCharacters;
+		public Character[] SpawnableLegendaryCharacters;
+		private List<Character> _spawnableCharacters;
 		private RTSManager _rtsManager;
 		public List<Character> CurrentCharacters = new List<Character>();
 		public List<Character> SelectedCharacters = new List<Character>();
@@ -23,6 +28,12 @@ namespace KRD
 		{
 			_rtsManager = GameObject.FindGameObjectWithTag("RTSManager").GetComponent<RTSManager>();
 			Cursor.SetCursor(DefaultCursor, Vector2.zero, CursorMode.Auto);
+			_spawnableCharacters = new List<Character>();
+			AddSpawnableCharacters(SpawnableCommonCharacters);
+			AddSpawnableCharacters(SpawnableUncommonCharacters);
+			AddSpawnableCharacters(SpawnableSpecialCharacters);
+			AddSpawnableCharacters(SpawnableRareCharacters);
+			AddSpawnableCharacters(SpawnableLegendaryCharacters);
 		}
 
 		// Update is called once per frame
@@ -156,10 +167,10 @@ namespace KRD
 			}
 		}
 
-		public void SpawnRandomCharacter()
+		public void SpawnRandomCommonCharacter()
 		{
-			var randomNumber = Random.Range(0, SpawnableCharacters.Length);
-			CurrentCharacters.Add(Instantiate(SpawnableCharacters[randomNumber], transform));
+			var randomNumber = Random.Range(0, SpawnableCommonCharacters.Length);
+			CurrentCharacters.Add(Instantiate(SpawnableCommonCharacters[randomNumber], transform));
 
 			// Sort Characters
 			CurrentCharacters.Sort(SortByCharacterOrder);
@@ -192,11 +203,12 @@ namespace KRD
 
 		public void SpawnCharacterByTag(string tag, Vector3 position)
 		{
-			for (int i = 0; i < SpawnableCharacters.Length; i++)
+			// TODO: Spawn any characters
+			for (int i = 0; i < _spawnableCharacters.Count; i++)
 			{
-				if (SpawnableCharacters[i].tag == tag)
+				if (_spawnableCharacters[i].tag == tag)
 				{
-					var newCharacter = Instantiate(SpawnableCharacters[i], transform);
+					var newCharacter = Instantiate(_spawnableCharacters[i], transform);
 					newCharacter.transform.localPosition = position;
 					CurrentCharacters.Add(newCharacter);
 				}
@@ -216,14 +228,14 @@ namespace KRD
 				return 0;
 			}
 
-			// Find index of the characters
-			for (int i = 0; i < SpawnableCharacters.Length; i++)
+			// Find index of the characters TODO: spawn any characters
+			for (int i = 0; i < _spawnableCharacters.Count; i++)
 			{
-				if (SpawnableCharacters[i].CompareTag(c1.tag))
+				if (_spawnableCharacters[i].CompareTag(c1.tag))
 				{
 					i1 = i;
 				}
-				else if (SpawnableCharacters[i].CompareTag(c2.tag))
+				else if (_spawnableCharacters[i].CompareTag(c2.tag))
 				{
 					i2 = i;
 				}
@@ -239,6 +251,15 @@ namespace KRD
 			}
 
 			return i1.CompareTo(i2);
+		}
+
+		private void AddSpawnableCharacters(Character[] characters)
+		{
+			if (characters == null) return;
+			for (int i = 0; i < characters.Length; i++)
+			{
+				_spawnableCharacters.Add(characters[i]);
+			}
 		}
 	}
 }
