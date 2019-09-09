@@ -16,7 +16,7 @@ namespace KRD
 
 		public Texture2D Crosshair;
 		public Texture2D DefaultCursor;
-		public Character MainCharacter => CurrentCharacters.Count > 0 ? CurrentCharacters[0] : null;
+		public Character MainCharacter => SelectedCharacters.Count > 0 ? SelectedCharacters[0] : null;
 
 		// Start is called before the first frame update
 		void Start()
@@ -163,6 +163,15 @@ namespace KRD
 
 			// Sort Characters
 			CurrentCharacters.Sort(SortByCharacterOrder);
+		}
+
+		public void RemoveCharacter(Character targetCharacter)
+		{
+			if (CurrentCharacters.Contains(targetCharacter))
+				CurrentCharacters.Remove(targetCharacter);
+			if (SelectedCharacters.Contains(targetCharacter))
+				SelectedCharacters.Remove(targetCharacter);
+			Destroy(targetCharacter.gameObject);
 		}
 
 		private int SortByCharacterOrder(Character c1, Character c2)

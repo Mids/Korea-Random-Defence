@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ namespace KRD
 		private bool _isCombinationKeyPressed = false;
 		private CharacterFactory _characterFactory;
 		private List<CombinationButton> _buttons;
+		private Character _targetCharacter = null;
 
 		// Start is called before the first frame update
 		void Start()
@@ -22,36 +24,29 @@ namespace KRD
 		// Update is called once per frame
 		void Update()
 		{
-			var character = _characterFactory.MainCharacter;
-			if (character == null) return;
+			if (_characterFactory.MainCharacter == null) return;
 
 			if (Input.GetButtonDown("Combination"))
 			{
+				_targetCharacter = _characterFactory.MainCharacter;
 				_isCombinationKeyPressed = true;
 
 				// Generate Buttons
-				for (int i = 0; i < character.CombinationLists.Count; i++)
+				for (int i = 0; i < _targetCharacter.CombinationLists.Count; i++)
 				{
-					var combination = character.CombinationLists[i];
-					var button = Instantiate(ButtonPrefab);
-					button.transform.parent = transform;
-					button.transform.localPosition = Vector3.up * 100 * (i + 1);
-					button.GetComponentInChildren<Text>().text = "";
-
-
-					for (int j = 0; j < combination.Characters.Count; j++)
-					{
-						if (j > 0) button.GetComponentInChildren<Text>().text += " + ";
-
-						button.GetComponentInChildren<Text>().text += combination.Characters[j].tag; // TODO: Change to use name not tag
-					}
-
-					button.GetComponentInChildren<Text>().text += " = " + combination.ResultCharacter.tag;
+					var combination = _targetCharacter.CombinationLists[i];
+					CombinationButton button = Instantiate(ButtonPrefab);
+					button.transform.SetParent(transform);
+					button.transform.localPosition = Vector3.up * 90 * (i + 1);
+					button.Combination = combination;
+					button.OwnerCharacter = _targetCharacter;
 				}
 			}
 			else if (Input.GetButtonUp("Combination"))
 			{
+				_targetCharacter = null;
 				_isCombinationKeyPressed = false;
+				RemoveAllCombinationButtons();
 			}
 
 			if (_isCombinationKeyPressed)
@@ -59,6 +54,14 @@ namespace KRD
 				var camera = Camera.main;
 				var characterTransform = _characterFactory.MainCharacter.transform;
 				transform.position = camera.WorldToScreenPoint(characterTransform.position);
+			}
+		}
+
+		public void RemoveAllCombinationButtons()
+		{
+			for (int i = GetComponentsInChildren<CombinationButton>().Length; i > 0; i--)
+			{
+				Destroy(GetComponentsInChildren<CombinationButton>()[i - 1].gameObject);
 			}
 		}
 	}
