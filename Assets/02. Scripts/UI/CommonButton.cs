@@ -13,16 +13,15 @@ namespace KRD
 
 		private Color _color = Color.white;
 
-		//gangrae
-		protected GameObject[] _luffy;
-		protected GameObject[] _zoro;
-		protected GameObject[] _nami;
-		protected GameObject[] _usopp;
-		protected GameObject[] _sanji;
-		protected GameObject[] _chopper;
-		protected GameObject[] _marinSword;
-		protected GameObject[] _marinGun;
-		protected GameObject[] _buggy;
+		protected GameObject[] Luffy;
+		protected GameObject[] Zoro;
+		protected GameObject[] Nami;
+		protected GameObject[] Usopp;
+		protected GameObject[] Sanji;
+		protected GameObject[] Chopper;
+		protected GameObject[] MarinSword;
+		protected GameObject[] MarinGun;
+		protected GameObject[] Buggy;
 
 		// Start is called before the first frame update
 		void Start()
@@ -39,25 +38,25 @@ namespace KRD
 		void Update()
 		{
 			// counting common character number
-			_luffy = GameObject.FindGameObjectsWithTag("Luffy");
-			_zoro = GameObject.FindGameObjectsWithTag("Zoro");
-			_nami = GameObject.FindGameObjectsWithTag("Nami");
-			_usopp = GameObject.FindGameObjectsWithTag("Usopp");
-			_sanji = GameObject.FindGameObjectsWithTag("Sanji");
-			_chopper = GameObject.FindGameObjectsWithTag("Chopper");
-			_marinSword = GameObject.FindGameObjectsWithTag("MarinSword");
-			_marinGun = GameObject.FindGameObjectsWithTag("MarinGun");
-			_buggy = GameObject.FindGameObjectsWithTag("Buggy");
+			Luffy = GameObject.FindGameObjectsWithTag("Luffy");
+			Zoro = GameObject.FindGameObjectsWithTag("Zoro");
+			Nami = GameObject.FindGameObjectsWithTag("Nami");
+			Usopp = GameObject.FindGameObjectsWithTag("Usopp");
+			Sanji = GameObject.FindGameObjectsWithTag("Sanji");
+			Chopper = GameObject.FindGameObjectsWithTag("Chopper");
+			MarinSword = GameObject.FindGameObjectsWithTag("MarinSword");
+			MarinGun = GameObject.FindGameObjectsWithTag("MarinGun");
+			Buggy = GameObject.FindGameObjectsWithTag("Buggy");
 
-			CommonText.text = "   Luffy   : " + _luffy.Length.ToString() + "  \n" +
-			                  "   Zoro    : " + _zoro.Length.ToString() + "\n" +
-			                  "   Nami    : " + _nami.Length.ToString() + "\n" +
-			                  "   Usopp   : " + _usopp.Length.ToString() + "\n" +
-			                  "   Sanji   : " + _sanji.Length.ToString() + "\n" +
-			                  "  Chopper  : " + _chopper.Length.ToString() + "\n" +
-			                  "MarinSword : " + _marinSword.Length.ToString() + "\n" +
-			                  "MarinGun   : " + _marinGun.Length.ToString() + "\n" +
-			                  "   Buggy   : " + _buggy.Length.ToString() + "\n";
+			CommonText.text = "   Luffy   : " + Luffy.Length.ToString() + "  \n" +
+			                  "   Zoro    : " + Zoro.Length.ToString() + "\n" +
+			                  "   Nami    : " + Nami.Length.ToString() + "\n" +
+			                  "   Usopp   : " + Usopp.Length.ToString() + "\n" +
+			                  "   Sanji   : " + Sanji.Length.ToString() + "\n" +
+			                  "  Chopper  : " + Chopper.Length.ToString() + "\n" +
+			                  "MarinSword : " + MarinSword.Length.ToString() + "\n" +
+			                  "MarinGun   : " + MarinGun.Length.ToString() + "\n" +
+			                  "   Buggy   : " + Buggy.Length.ToString() + "\n";
 
 			_color.a -= Time.deltaTime / 3;
 			CommonText.color = _color;
