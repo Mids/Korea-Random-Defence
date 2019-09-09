@@ -174,6 +174,38 @@ namespace KRD
 			Destroy(targetCharacter.gameObject);
 		}
 
+		public void RemoveCharacterByTag(string tag)
+		{
+			Character targetCharacter = null;
+			for (int i = 0; i < CurrentCharacters.Count; i++)
+			{
+				if (CurrentCharacters[i].tag == tag)
+				{
+					targetCharacter = CurrentCharacters[i];
+					break;
+				}
+			}
+
+			if (targetCharacter != null)
+				RemoveCharacter(targetCharacter);
+		}
+
+		public void SpawnCharacterByTag(string tag, Vector3 position)
+		{
+			for (int i = 0; i < SpawnableCharacters.Length; i++)
+			{
+				if (SpawnableCharacters[i].tag == tag)
+				{
+					var newCharacter = Instantiate(SpawnableCharacters[i], transform);
+					newCharacter.transform.localPosition = position;
+					CurrentCharacters.Add(newCharacter);
+				}
+			}
+
+			// Sort Characters
+			CurrentCharacters.Sort(SortByCharacterOrder);
+		}
+
 		private int SortByCharacterOrder(Character c1, Character c2)
 		{
 			int i1 = -1, i2 = -1;
