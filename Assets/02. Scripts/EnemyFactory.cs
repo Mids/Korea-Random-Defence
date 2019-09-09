@@ -19,7 +19,7 @@ namespace KRD
 
 		// Spawning
 		public bool IsSpawning = true;
-		public int UnitCount = 80;
+		public int UnitCount = 40;
 		public float SpawningTime = 1.0f;
 		public float SpawningCooldown;
 		public int CurrentUnitCount = 0;
@@ -167,7 +167,6 @@ namespace KRD
 				CurrentEnemy = RoundEnemy[_gameRound];
 				CurrentEnemy.Init(_gameRound, _enemyHP[_gameRound]);
 				CurrentEnemyNum = 0;
-				UnitCount = 80;
 				InstantiateEnemies();
 			}
 		}
