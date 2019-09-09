@@ -568,6 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3a393232ab219459f17bbe5e0bb911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Difficulty: 3
   EnemyCountText: {fileID: 816155513}
   RoundTimeText: {fileID: 745151217}
   RoundEnemy:

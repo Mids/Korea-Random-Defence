@@ -9,6 +9,7 @@ namespace KRD
 		public int CurrentHP, MaxHP;
 		public Direction CurDirection;
 		public float MoveSpeed = 0.1f;
+		private float _moveSpeed;
 		public bool IsActive = false;
 
 		public Slider HPSlider;
@@ -26,6 +27,7 @@ namespace KRD
 			HPSlider.maxValue = MaxHP;
 			HPSlider.value = CurrentHP;
 			SetDirection(Direction.South);
+			_moveSpeed = MoveSpeed * EnemyFactory.DifficultyMultiplier;
 		}
 
 		/// <summary>
@@ -51,8 +53,8 @@ namespace KRD
 		{
 			if (!IsActive) return;
 
-			// Move
-			transform.localPosition += DirectionTool.GetDirectionVector(CurDirection) * MoveSpeed;
+			// Move TODO: change to use deltaTime
+			transform.localPosition += DirectionTool.GetDirectionVector(CurDirection) * _moveSpeed;
 
 			// Turn counterclockwise
 			if (CheckTurnPosition())

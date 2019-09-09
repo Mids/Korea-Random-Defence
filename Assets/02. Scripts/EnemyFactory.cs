@@ -6,11 +6,15 @@ namespace KRD
 	public class EnemyFactory : MonoBehaviour
 	{
 		//about game Interface
+		public int Difficulty;
+		public readonly float[] DifficultyMultiplierSet = {1.0f, 1.2f, 1.5f, 2.0f};
+		public static float DifficultyMultiplier;
 		public Text EnemyCountText;
 		public Text RoundTimeText;
 		public Enemy[] RoundEnemy = new Enemy[_maxGameRound];
 		private GameObject[] _enemyObject;
 		private int _enemyCount;
+		public readonly float RoundTime = 40;
 		private float _roundTime;
 		private int _gameRound;
 		private static int _maxGameRound = 40;
@@ -30,14 +34,19 @@ namespace KRD
 		public Enemy[] Enemies;
 		public int CurrentEnemyNum = 0;
 		public static float EnemyHPMultiple = 1.3f;
-		public static float EnemyHPInitialRound = 240f;
+		public static float EnemyHPInitialRound = 60f;
 		private int[] _enemyHP = new int[_maxGameRound];
 
 		// Start is called before the first frame update
 		void Start()
 		{
+			// Difficulty Setting
+			DifficultyMultiplier = DifficultyMultiplierSet[Difficulty];
+			SpawningTime /= DifficultyMultiplier;
+			EnemyHPInitialRound *= DifficultyMultiplier;
+
 			_enemyCount = 0;
-			_roundTime = 80;
+			_roundTime = RoundTime;
 			_gameRound = 0;
 			_randomButton = GameObject.FindObjectOfType<RandomButton>();
 
@@ -55,8 +64,6 @@ namespace KRD
 
 			CurrentEnemy = RoundEnemy[0];
 			// TODO: Set First Enemy
-//			CurrentEnemy = Instantiate();
-			CurrentEnemy.Init(_gameRound, _enemyHP[_gameRound]);
 			InstantiateEnemies();
 		}
 
@@ -102,6 +109,7 @@ namespace KRD
 			for (int i = 0; i < UnitCount; i++)
 			{
 				var enemy = Instantiate(CurrentEnemy, Vector3.zero, Quaternion.identity, transform);
+				enemy.Init(_gameRound, (int) (_enemyHP[_gameRound] * DifficultyMultiplier));
 				Enemies[i] = enemy;
 			}
 		}
@@ -109,6 +117,7 @@ namespace KRD
 		private void InstantiateBoss()
 		{
 			var enemy = Instantiate(CurrentEnemy, Vector3.zero, Quaternion.identity, transform);
+			enemy.Init(_gameRound, (int) (_enemyHP[_gameRound] * DifficultyMultiplier));
 			Enemies[0] = enemy;
 		}
 
@@ -150,22 +159,22 @@ namespace KRD
 
 		private void RoundUp()
 		{
-			_roundTime = 80;
+			_roundTime = RoundTime;
 			_gameRound += 1;
 			IsSpawning = true;
 			_randomButton.ChanceLeft += 2;
 
-			if (_gameRound % 9 == 0)
+			if (_gameRound % 10 == 9)
 			{
 				CurrentEnemy = RoundEnemy[_gameRound];
-				CurrentEnemy.Init(_gameRound, _enemyHP[_gameRound]);
+				CurrentEnemy.Init(_gameRound, (int) (_enemyHP[_gameRound] * DifficultyMultiplier));
 				CurrentEnemyNum = 0;
 				InstantiateBoss();
 			}
 			else
 			{
 				CurrentEnemy = RoundEnemy[_gameRound];
-				CurrentEnemy.Init(_gameRound, _enemyHP[_gameRound]);
+				CurrentEnemy.Init(_gameRound, (int) (_enemyHP[_gameRound] * DifficultyMultiplier));
 				CurrentEnemyNum = 0;
 				InstantiateEnemies();
 			}
