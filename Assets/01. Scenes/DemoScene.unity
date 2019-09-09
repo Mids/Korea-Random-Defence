@@ -607,7 +607,7 @@ MonoBehaviour:
   - {fileID: 8200349577645884953, guid: 417bc4df1bd6ad042acf65f4613aeab4, type: 3}
   - {fileID: 5659154552780097695, guid: 15428ddbcb601bb49aab7bab8f1ad44d, type: 3}
   IsSpawning: 1
-  UnitCount: 80
+  UnitCount: 40
   SpawningTime: 1
   SpawningCooldown: 0
   CurrentUnitCount: 0
