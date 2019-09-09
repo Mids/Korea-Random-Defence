@@ -46,6 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   Speed: 20
+  StunAbility: 0
+  StunObject: {fileID: 519092591397001832, guid: 360c64373821b9342a4160e5c31ee6e9,
+    type: 3}
 --- !u!1 &6400871486947434399
 GameObject:
   m_ObjectHideFlags: 0

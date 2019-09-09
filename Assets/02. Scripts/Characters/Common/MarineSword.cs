@@ -12,6 +12,7 @@ namespace KRD
 		{
 			base.Start();
 			AttackDamage = 41;
+			StunAbility = false;
 		}
 
 
