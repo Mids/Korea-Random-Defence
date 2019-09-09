@@ -5,7 +5,7 @@ namespace KRD
 {
 	public class EnemyFactory : MonoBehaviour
 	{
-		//about enemy count parameters
+		//about game Interface
 		public Text EnemyCountText;
 		public Text RoundTimeText;
 		public Enemy[] RoundEnemy = new Enemy[_maxGameRound];
@@ -15,11 +15,7 @@ namespace KRD
 		private int _gameRound;
 		private static int _maxGameRound = 40;
 		private int _limitEnemy = 80;
-
-		public static float EnemyHPMultiple = 1.3f;
-		public static float EnemyHPInitialRound = 240f;
-
-		private int[] _enemyHP = new int[_maxGameRound];
+		private RandomButton _randomButton;
 
 		// Spawning
 		public bool IsSpawning = true;
@@ -33,7 +29,9 @@ namespace KRD
 		public Enemy CurrentEnemy;
 		public Enemy[] Enemies;
 		public int CurrentEnemyNum = 0;
-
+		public static float EnemyHPMultiple = 1.3f;
+		public static float EnemyHPInitialRound = 240f;
+		private int[] _enemyHP = new int[_maxGameRound];
 
 		// Start is called before the first frame update
 		void Start()
@@ -41,6 +39,7 @@ namespace KRD
 			_enemyCount = 0;
 			_roundTime = 80;
 			_gameRound = 0;
+			_randomButton = GameObject.FindObjectOfType<RandomButton>();
 
 			//calcuate each round enemy HP
 			for (int i = 0; i <= _maxGameRound - 1; i++)
@@ -154,6 +153,8 @@ namespace KRD
 			_roundTime = 80;
 			_gameRound += 1;
 			IsSpawning = true;
+			_randomButton.ChanceLeft += 2;
+			_randomButton.ChangeButtonText();
 
 			if (_gameRound % 9 == 0)
 			{

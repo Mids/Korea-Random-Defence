@@ -22,11 +22,6 @@ namespace KRD
 		{
 			_rtsManager = GameObject.FindGameObjectWithTag("RTSManager").GetComponent<RTSManager>();
 			Cursor.SetCursor(DefaultCursor, Vector2.zero, CursorMode.Auto);
-			//when game was started, 5 common unit gerneration
-			for (int i = 0; i < 5; i++)
-			{
-				SpawnRandomCharacter();
-			}
 		}
 
 		// Update is called once per frame

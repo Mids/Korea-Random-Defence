@@ -33,7 +33,7 @@ namespace KRD
             }
 		}
 
-		private void ChangeButtonText()
+		public void ChangeButtonText()
 		{
 			_text.text = RandomText + "\n(" + ChanceLeft + ")";
         }
