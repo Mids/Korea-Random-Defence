@@ -32,20 +32,22 @@ namespace KRD
 		// Update is called once per frame
 		void Update()
 		{
+			// If 'a' is not pressed
 			if (!IsTargeting)
 			{
-				_rtsManager.CheckSelecting();
+				// If we release the left mouse button
+				if (Input.GetMouseButtonUp(0))
+				{
+					if (_rtsManager.IsSelecting)
+					{
+						CheckSelection();
+					}
+				}
+                _rtsManager.CheckSelecting();
 			}
 
-			// Select units if player is selecting
-			if (_rtsManager.IsSelecting)
-			{
-				CheckSelection();
-				return;
-			}
-
-			// If there is no selected characters, skip below actions
-			if (SelectedCharacters.Count == 0)
+            // If there is no selected characters, skip below actions
+            if (SelectedCharacters.Count == 0)
 				return;
 
 			// If we press the right mouse button, let the characters go
