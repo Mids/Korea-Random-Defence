@@ -11,7 +11,18 @@ namespace KRD
 		private Text _text;
 		private CharacterFactory _characterFactory;
 
-		public int ChanceLeft = 5;
+		private int _chanceLeft = 5;
+
+		public int ChanceLeft
+		{
+			get => _chanceLeft;
+			set
+			{
+				_chanceLeft = value;
+				ChangeButtonText();
+			}
+		}
+
 		private const string RandomText = "Random";
 
 		// Start is called before the first frame update
@@ -30,12 +41,12 @@ namespace KRD
 				ChanceLeft--;
 				_characterFactory.SpawnRandomCharacter();
 				ChangeButtonText();
-            }
+			}
 		}
 
-		public void ChangeButtonText()
+		private void ChangeButtonText()
 		{
 			_text.text = RandomText + "\n(" + ChanceLeft + ")";
-        }
+		}
 	}
 }

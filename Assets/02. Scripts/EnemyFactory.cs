@@ -154,7 +154,6 @@ namespace KRD
 			_gameRound += 1;
 			IsSpawning = true;
 			_randomButton.ChanceLeft += 2;
-			_randomButton.ChangeButtonText();
 
 			if (_gameRound % 9 == 0)
 			{
