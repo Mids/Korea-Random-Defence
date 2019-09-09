@@ -140,6 +140,22 @@ MonoBehaviour:
   BulletPrefab: {fileID: 4734879832706682267, guid: aa1a47900ac032b4aa6ae76cbf129911,
     type: 3}
   FirePoint: {fileID: 2171553746244740033}
+  CombinationLists:
+  - Characters:
+    - {fileID: 8298607015580777623}
+    - {fileID: -8724036597741914239, guid: b7aa8fd14f65ef14a8ce10cd1c33042e, type: 3}
+    ResultCharacter: {fileID: 1717315277459485056, guid: 0192e35979e5dcb4bb0d0db6d4ce23bf,
+      type: 3}
+  - Characters:
+    - {fileID: 8298607015580777623}
+    - {fileID: 2777311104257262956, guid: 6a686001918d21c4c850e322251fea9f, type: 3}
+    ResultCharacter: {fileID: 1717315277459485056, guid: 0192e35979e5dcb4bb0d0db6d4ce23bf,
+      type: 3}
+  - Characters:
+    - {fileID: 8298607015580777623}
+    - {fileID: 7471719670607551337, guid: c423397afee8a584f9843b2077ba2107, type: 3}
+    ResultCharacter: {fileID: 1717315277459485056, guid: 0192e35979e5dcb4bb0d0db6d4ce23bf,
+      type: 3}
 --- !u!1 &1634116100821723178
 GameObject:
   m_ObjectHideFlags: 0

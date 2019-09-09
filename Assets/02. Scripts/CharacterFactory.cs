@@ -16,6 +16,7 @@ namespace KRD
 
 		public Texture2D Crosshair;
 		public Texture2D DefaultCursor;
+		public Character MainCharacter => CurrentCharacters.Count > 0 ? CurrentCharacters[0] : null;
 
 		// Start is called before the first frame update
 		void Start()

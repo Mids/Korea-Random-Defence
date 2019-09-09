@@ -5,6 +5,13 @@ using UnityEngine.AI;
 
 namespace KRD
 {
+	[System.Serializable]
+	public class CombinationList
+	{
+		public List<Character> Characters; // First Element must be itself.
+		public Character ResultCharacter;
+	}
+
 	public class Character : MonoBehaviour
 	{
 		private Projector _selectionCircle;
@@ -21,6 +28,9 @@ namespace KRD
 
 		public GameObject BulletPrefab;
 		public Transform FirePoint;
+
+		// Combination
+		public List<CombinationList> CombinationLists;
 
 		// Start is called before the first frame update
 		protected virtual void Start()
@@ -176,6 +186,11 @@ namespace KRD
 		public bool CheckEnemyInRange()
 		{
 			return Range.GetEnemiesInRange().Count > 0;
+		}
+
+		public void Combination(int n)
+		{
+			print("Combination : " + n);
 		}
 	}
 }
