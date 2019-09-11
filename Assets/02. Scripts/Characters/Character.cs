@@ -43,6 +43,7 @@ namespace KRD
 			IsAttacking = true;
 			IsMoving = false;
 			_nav = GetComponent<NavMeshAgent>();
+			_nav.stoppingDistance = 3f;
 		}
 
 		// Update is called once per frame
@@ -85,6 +86,11 @@ namespace KRD
 		{
 			_nav.destination = destination;
 			IsMoving = true;
+		}
+
+		public void Stop()
+		{
+			Move(transform.position);
 		}
 
 		public void Select()
