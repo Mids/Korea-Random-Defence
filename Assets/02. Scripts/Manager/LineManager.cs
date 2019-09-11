@@ -15,9 +15,10 @@ namespace KRD
 		// Start is called before the first frame update
 		private void Init()
 		{
-			var PlayerLine = Lines[PlayerLineNumber];
-			PlayerLine.GetComponentInChildren<EnemyFactory>().enabled = true;
-			PlayerLine.GetComponentInChildren<CharacterFactory>().enabled = true;
+			var playerLine = Lines[PlayerLineNumber];
+			playerLine.GetComponentInChildren<EnemyFactory>().enabled = true;
+			playerLine.GetComponentInChildren<CharacterFactory>().enabled = true;
+			Camera.main.transform.transform.position = new Vector3(playerLine.transform.position.x, Camera.main.transform.transform.position.y, playerLine.transform.position.z - 20);
 			_isInitialized = true;
 		}
 
