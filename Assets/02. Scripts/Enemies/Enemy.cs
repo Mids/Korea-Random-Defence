@@ -53,8 +53,8 @@ namespace KRD
 		{
 			if (!IsActive) return;
 
-			// Move TODO: change to use deltaTime
-			transform.localPosition += DirectionTool.GetDirectionVector(CurDirection) * _moveSpeed;
+			// Move
+			transform.localPosition += DirectionTool.GetDirectionVector(CurDirection) * _moveSpeed * (Time.deltaTime * 30);
 
 			// Turn counterclockwise
 			if (CheckTurnPosition())
