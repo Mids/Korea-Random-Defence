@@ -162,6 +162,7 @@ namespace KRD
 
 		private void RoundUp()
 		{
+			_roundTime = RoundTime;
 			_gameRound += 1;
 			IsSpawning = true;
 			_randomButton.ChanceLeft += 2;
