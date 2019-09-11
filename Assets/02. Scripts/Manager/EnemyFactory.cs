@@ -59,7 +59,7 @@ namespace KRD
 				float calcuatedHP = EnemyHPInitialRound * Mathf.Pow(EnemyHPMultiple, i);
 				_enemyHP[i] = (int) calcuatedHP;
 
-				if (i > 0 && i % 9 == 0)
+				if (i > 0 && i % 10 == 9)
 				{
 					_enemyHP[i] = (int) calcuatedHP * 100;
 				}
