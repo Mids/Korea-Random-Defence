@@ -66,6 +66,7 @@ namespace KRD
 			}
 
 			CurrentEnemy = RoundEnemy[0];
+			CurrentEnemy.Init(_gameRound, (int) (_enemyHP[_gameRound] * DifficultyMultiplier));
 			// TODO: Set First Enemy
 			InstantiateEnemies();
 		}
