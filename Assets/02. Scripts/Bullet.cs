@@ -13,8 +13,11 @@ namespace KRD
 
 		public int Damage;
 		public float Speed = 70f;
+
+		//Ability parameters
 		public bool StunAbility;
 		public GameObject StunObject;
+		public float DamagePerTotalHP;
 
 		public void Seek(Transform target)
 		{
@@ -55,7 +58,7 @@ namespace KRD
 
 		void HitTarget()
 		{
-			_target.TakeDamage(Damage);
+			_target.TakeDamage(Damage,DamagePerTotalHP);
 		}
 	}
 }

@@ -12,7 +12,8 @@ namespace KRD
 		{
 			base.Start();
 			AttackDamage = 25001;
-			StunAbility = false;
+			DamagePerTotalHP = 0.0001f;
+            StunAbility = false;
 		}
 
 

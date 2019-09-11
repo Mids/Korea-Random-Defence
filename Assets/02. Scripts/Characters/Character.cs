@@ -31,8 +31,10 @@ namespace KRD
 
 		// Combination
 		public List<CombinationList> CombinationLists;
+
 		// Ability parameters
 		public bool StunAbility;
+		public float DamagePerTotalHP = 0.0f;
 
 		// Start is called before the first frame update
 		protected virtual void Start()
@@ -183,6 +185,7 @@ namespace KRD
 
 			bullet.Damage = AttackDamage;
 			bullet.StunAbility = StunAbility;
+			bullet.DamagePerTotalHP = DamagePerTotalHP;
 			bullet.Seek(_currentTarget.transform);
 		}
 
