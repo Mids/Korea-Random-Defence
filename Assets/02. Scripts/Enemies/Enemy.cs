@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace KRD
 {
@@ -13,6 +14,7 @@ namespace KRD
 		public bool IsActive = false;
 
 		public Slider HPSlider;
+		private float _stunTime;
 
 		/// <summary>
 		/// Initialize Enemy
@@ -54,11 +56,19 @@ namespace KRD
 			if (!IsActive) return;
 
 			// Move
-			transform.localPosition += DirectionTool.GetDirectionVector(CurDirection) * _moveSpeed * (Time.deltaTime * 30);
+			if (_stunTime <= 0)
+			{
+				transform.localPosition += DirectionTool.GetDirectionVector(CurDirection) * _moveSpeed * (Time.deltaTime * 30);
+			}
+			else
+			{
+				_stunTime -= Time.deltaTime;
+			}
 
 			// Turn counterclockwise
 			if (CheckTurnPosition())
 				CurDirection = DirectionTool.CounterClockwise(CurDirection);
+
 
 			if (CurrentHP < 0)
 			{
@@ -120,6 +130,27 @@ namespace KRD
 			HPSlider.value = CurrentHP;
 
 			return false;
+		}
+
+		public void ReceiveStun(float[] stun)
+		{
+			float stunProb = Random.Range(0.0f, stun[1]);
+
+			if (stunProb < 100)
+			{
+				_stunTime = stun[0];
+			}
+		}
+
+		public void ReceiveAura(float[] aura)
+		{
+			MoveSpeed = 0.1f - aura[0];
+			TakeDamage((int) aura[1]);
+		}
+
+		public void ReleaseAura()
+		{
+			MoveSpeed = 0.1f;
 		}
 	}
 }

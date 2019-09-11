@@ -31,6 +31,8 @@ namespace KRD
 
 		// Combination
 		public List<CombinationList> CombinationLists;
+		// Ability parameters
+		public bool StunAbility;
 
 		// Start is called before the first frame update
 		protected virtual void Start()
@@ -180,6 +182,7 @@ namespace KRD
 			}
 
 			bullet.Damage = AttackDamage;
+			bullet.StunAbility = StunAbility;
 			bullet.Seek(_currentTarget.transform);
 		}
 

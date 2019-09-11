@@ -13,6 +13,8 @@ namespace KRD
 
 		public int Damage;
 		public float Speed = 70f;
+		public bool StunAbility;
+		public GameObject StunObject;
 
 		public void Seek(Transform target)
 		{
@@ -29,12 +31,21 @@ namespace KRD
 				return;
 			}
 
+			transform.LookAt(_targetTransform);
+
 			Vector3 dir = _targetTransform.position - transform.position;
 			float distanceThisFrame = Speed * Time.deltaTime;
 
 			if (dir.magnitude <= distanceThisFrame)
 			{
 				HitTarget();
+				//StunObject = range stun object
+				if (StunAbility)
+				{
+					//TODO: stun time and percent though of each character
+                    Instantiate(StunObject, transform.position, transform.rotation);
+				}
+
 				Destroy(gameObject);
 				return;
 			}
