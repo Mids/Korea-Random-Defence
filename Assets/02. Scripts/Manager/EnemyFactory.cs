@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace KRD
@@ -9,8 +10,8 @@ namespace KRD
 		public int Difficulty;
 		public readonly float[] DifficultyMultiplierSet = {1.0f, 1.2f, 1.5f, 2.0f};
 		public static float DifficultyMultiplier;
-		public Text EnemyCountText;
-		public Text RoundTimeText;
+		private Text _enemyCountText;
+		private Text _roundTimeText;
 		public Enemy[] RoundEnemy = new Enemy[_maxGameRound];
 		private GameObject[] _enemyObject;
 		private int _enemyCount;
@@ -49,6 +50,8 @@ namespace KRD
 			_roundTime = RoundTime;
 			_gameRound = 0;
 			_randomButton = GameObject.FindObjectOfType<RandomButton>();
+			_enemyCountText = FindObjectOfType<EnemyCount>().GetComponent<Text>();
+			_roundTimeText = FindObjectOfType<RountTime>().GetComponent<Text>();
 
 			//calcuate each round enemy HP
 			for (int i = 0; i <= _maxGameRound - 1; i++)
@@ -75,8 +78,8 @@ namespace KRD
 			_enemyCount = _enemyObject.Length;
 			_roundTime -= Time.deltaTime;
 
-			EnemyCountText.text = "Enemy Count   " + _enemyCount.ToString();
-			RoundTimeText.text = "Round  " + (_gameRound + 1).ToString() + "    " + Mathf.Ceil(_roundTime).ToString();
+			_enemyCountText.text = "Enemy Count   " + _enemyCount.ToString();
+			_roundTimeText.text = "Round  " + (_gameRound + 1).ToString() + "    " + Mathf.Ceil(_roundTime).ToString();
 
 			//round up when round time end
 			if (_roundTime < 0.0)
@@ -159,7 +162,6 @@ namespace KRD
 
 		private void RoundUp()
 		{
-			_roundTime = RoundTime;
 			_gameRound += 1;
 			IsSpawning = true;
 			_randomButton.ChanceLeft += 2;

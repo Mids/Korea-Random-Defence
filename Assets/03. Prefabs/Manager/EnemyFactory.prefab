@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5844697566162007018}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
@@ -38,14 +38,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5844697566162007018}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc3a393232ab219459f17bbe5e0bb911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Difficulty: 3
-  EnemyCountText: {fileID: 0}
-  RoundTimeText: {fileID: 0}
+  EnemyCountText: {fileID: 1705939767730201819, guid: e2ee261e0afe4054f996632337fef6d8,
+    type: 3}
+  RoundTimeText: {fileID: 3674034904095990326, guid: 05f4148024c090141a3f8f8bd90a25d9,
+    type: 3}
   RoundEnemy:
   - {fileID: 4134108178920103390, guid: 1016fe9a16ff40742bbb4f61ff5e8e1c, type: 3}
   - {fileID: 1913627400339189008, guid: 3e39dcc185a30124eb07996616eca33c, type: 3}
