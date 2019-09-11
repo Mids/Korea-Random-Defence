@@ -59,7 +59,7 @@ namespace KRD
 				float calcuatedHP = EnemyHPInitialRound * Mathf.Pow(EnemyHPMultiple, i);
 				_enemyHP[i] = (int) calcuatedHP;
 
-				if (i > 0 && i % 9 == 0)
+				if (i > 0 && i % 10 == 9)
 				{
 					_enemyHP[i] = (int) calcuatedHP * 100;
 				}
@@ -182,6 +182,21 @@ namespace KRD
 				CurrentEnemyNum = 0;
 				InstantiateEnemies();
 			}
+		}
+
+		public static EnemyFactory GetEnabledEnemyFactory()
+		{
+			var enemyFactories = FindObjectsOfType<EnemyFactory>();
+			for (int i = 0; i < enemyFactories.Length; i++)
+			{
+				if (enemyFactories[i].enabled)
+				{
+					return enemyFactories[i];
+				}
+			}
+			
+			// If there is no enabled one.
+			return null;
 		}
 	}
 }
