@@ -261,5 +261,20 @@ namespace KRD
 				_spawnableCharacters.Add(characters[i]);
 			}
 		}
+
+		public static CharacterFactory GetEnabledCharacterFactory()
+		{
+			var characterFactories = FindObjectsOfType<CharacterFactory>();
+			for (int i = 0; i < characterFactories.Length; i++)
+			{
+				if (characterFactories[i].enabled)
+				{
+					return characterFactories[i];
+				}
+			}
+
+			// If there is no enabled one.
+            return null;
+		}
 	}
 }

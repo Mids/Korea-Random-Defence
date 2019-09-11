@@ -182,5 +182,20 @@ namespace KRD
 				InstantiateEnemies();
 			}
 		}
+
+		public static EnemyFactory GetEnabledEnemyFactory()
+		{
+			var enemyFactories = FindObjectsOfType<EnemyFactory>();
+			for (int i = 0; i < enemyFactories.Length; i++)
+			{
+				if (enemyFactories[i].enabled)
+				{
+					return enemyFactories[i];
+				}
+			}
+			
+			// If there is no enabled one.
+			return null;
+		}
 	}
 }
