@@ -117,9 +117,9 @@ namespace KRD
 		/// </summary>
 		/// <param name="damage"></param>
 		/// <returns>True if died</returns>
-		public bool TakeDamage(int damage)
+		public bool TakeDamage(int damage,float DamagePerTotalHealth)
 		{
-			CurrentHP -= damage;
+			CurrentHP -= (damage+ (int)(MaxHP*DamagePerTotalHealth));
 			if (CurrentHP <= 0)
 			{
 				//Die
@@ -145,7 +145,7 @@ namespace KRD
 		public void ReceiveAura(float[] aura)
 		{
 			MoveSpeed = 0.1f - aura[0];
-			TakeDamage((int) aura[1]);
+			TakeDamage((int) aura[1],0.0f);
 		}
 
 		public void ReleaseAura()

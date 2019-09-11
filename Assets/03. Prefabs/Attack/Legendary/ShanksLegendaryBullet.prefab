@@ -14075,4 +14075,5 @@ MonoBehaviour:
   Damage: 0
   Speed: 70
   StunAbility: 0
-  StunObject: {fileID: 0}
+  StunObject: {fileID: 519092591397001832, guid: 360c64373821b9342a4160e5c31ee6e9,
+    type: 3}
