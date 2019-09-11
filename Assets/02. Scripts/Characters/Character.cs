@@ -37,6 +37,7 @@ namespace KRD
 		// Start is called before the first frame update
 		protected virtual void Start()
 		{
+			gameObject.layer = LayerMask.NameToLayer("Character");
 			_selectionCircle = GetComponentInChildren<Projector>();
 			Deselect();
 			Range = GetComponentInChildren<AttackRange>();
@@ -200,6 +201,11 @@ namespace KRD
 		public void Combination(int n)
 		{
 			print("Combination : " + n);
+		}
+
+		public void Warp(Vector3 position)
+		{
+			_nav.Warp(position);
 		}
 	}
 }

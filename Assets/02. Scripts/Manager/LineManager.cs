@@ -6,7 +6,7 @@ namespace KRD
 {
 	public class LineManager : MonoBehaviour
 	{
-		public int PlayerLineNumber = 0;
+		public static readonly int PlayerLineNumber = 3;
 
 		public GameObject[] Lines = new GameObject[4];
 
