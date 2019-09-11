@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7697621337041661661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7697621337041661663}
+  - component: {fileID: 7697621337041661660}
+  m_Layer: 0
+  m_Name: CharacterFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7697621337041661663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7697621337041661661}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7697621337041661660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7697621337041661661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7859381893641042933d1235d85c6ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnableCommonCharacters:
+  - {fileID: 8298607015580777623, guid: 23b34d2ccff8ffe4884b66c35fedaaff, type: 3}
+  - {fileID: 4140418219326538767, guid: d024bcb68eec5b74e944cc89f50a3524, type: 3}
+  - {fileID: 5253558404196237036, guid: acc6a92f80412bd47a8acff8e026343b, type: 3}
+  - {fileID: 7471719670607551337, guid: c423397afee8a584f9843b2077ba2107, type: 3}
+  - {fileID: 5839565589376242278, guid: 664a02cd3b6fb134c978be7531a39722, type: 3}
+  - {fileID: -8724036597741914239, guid: b7aa8fd14f65ef14a8ce10cd1c33042e, type: 3}
+  - {fileID: 5201770059658902658, guid: fcfca821b7e189542af1920b5624ea8a, type: 3}
+  - {fileID: 2777311104257262956, guid: 6a686001918d21c4c850e322251fea9f, type: 3}
+  - {fileID: 1717315277459485056, guid: 0192e35979e5dcb4bb0d0db6d4ce23bf, type: 3}
+  SpawnableUncommonCharacters:
+  - {fileID: 8876992391806596664, guid: 12267a9222f8dbe4791901bd1137daa2, type: 3}
+  SpawnableSpecialCharacters: []
+  SpawnableRareCharacters: []
+  SpawnableLegendaryCharacters: []
+  CurrentCharacters: []
+  SelectedCharacters: []
+  IsTargeting: 0
+  Crosshair: {fileID: 2800000, guid: 272684fd9c7e2c64483c560e9a196057, type: 3}
+  DefaultCursor: {fileID: 2800000, guid: 16bddb277bfbb6e4b91857f617a230c3, type: 3}

@@ -13,17 +13,26 @@ namespace KRD
 		private CharacterFactory _characterFactory;
 		private List<CombinationButton> _buttons;
 		private Character _targetCharacter = null;
+		private bool _isInitialized = false;
 
 		// Start is called before the first frame update
-		void Start()
+		private void Init()
 		{
+			if (_characterFactory == null) return;
 			_characterFactory = FindObjectOfType<CharacterFactory>();
 			_buttons = new List<CombinationButton>();
+			_isInitialized = true;
 		}
 
 		// Update is called once per frame
 		void Update()
 		{
+			if(!_isInitialized) {
+                // not started yet
+                Init();
+                return;
+			}
+			
 			if (_characterFactory.MainCharacter == null) return;
 
 			if (Input.GetButtonDown("Combination"))

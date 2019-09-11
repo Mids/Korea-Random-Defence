@@ -12,6 +12,7 @@ namespace KRD
 		private CharacterFactory _characterFactory;
 
 		private int _chanceLeft = 5;
+		private bool _isInitialized = false;
 
 		public int ChanceLeft
 		{
@@ -26,12 +27,36 @@ namespace KRD
 		private const string RandomText = "Random";
 
 		// Start is called before the first frame update
-		void Start()
+		private void Init()
 		{
+			var characterFactories = FindObjectsOfType<CharacterFactory>();
+			for (int i = 0; i < characterFactories.Length; i++)
+			{
+				if (characterFactories[i].enabled)
+				{
+					_characterFactory = characterFactories[i];
+					break;
+				}
+			}
+
+			if (_characterFactory == null)
+			{
+				return;
+			}
+
 			_button = GetComponent<Button>();
-			_characterFactory = GameObject.FindObjectOfType<CharacterFactory>();
 			_text = _button.GetComponentInChildren<Text>();
 			ChangeButtonText();
+			_isInitialized = true;
+		}
+
+		private void Update()
+		{
+			if (!_isInitialized)
+			{
+				Init();
+				return;
+			}
 		}
 
 		public void SpawnCharacter()

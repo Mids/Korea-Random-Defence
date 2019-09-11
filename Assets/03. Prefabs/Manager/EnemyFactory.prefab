@@ -1,0 +1,177 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5844697566162007018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5844697566162007016}
+  - component: {fileID: 5844697566162007017}
+  m_Layer: 0
+  m_Name: EnemyFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5844697566162007016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5844697566162007018}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5844697566162007017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5844697566162007018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3a393232ab219459f17bbe5e0bb911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Difficulty: 3
+  EnemyCountText: {fileID: 0}
+  RoundTimeText: {fileID: 0}
+  RoundEnemy:
+  - {fileID: 4134108178920103390, guid: 1016fe9a16ff40742bbb4f61ff5e8e1c, type: 3}
+  - {fileID: 1913627400339189008, guid: 3e39dcc185a30124eb07996616eca33c, type: 3}
+  - {fileID: 549906055476494375, guid: 36748cc643a084545b166117c5da2154, type: 3}
+  - {fileID: 983009543453901219, guid: ffe14b88f2f022b49a5b973b34e11ee6, type: 3}
+  - {fileID: 5731685440841633402, guid: f3c171534d4a13f48812180d7f352e7d, type: 3}
+  - {fileID: 8809260856545988863, guid: 98c548a6f5769954db03b5864b97888b, type: 3}
+  - {fileID: 4431698177155875754, guid: b434ac5ce9182d640a2dac2a90359ba0, type: 3}
+  - {fileID: 6702033400606952156, guid: 9a10cf6cb0c70c84e93cc02f934c21cd, type: 3}
+  - {fileID: 4536436917272109745, guid: 577e7a58267b8f04a915fab11137a90a, type: 3}
+  - {fileID: 685579101628150608, guid: 9e025ae59a9d54341a7247fdc64a0207, type: 3}
+  - {fileID: 240486292828799238, guid: dfae3acdc22b1be4b9b47a82c44f2165, type: 3}
+  - {fileID: 2078497864797707371, guid: 457cb283a79a91049bf148522e35c814, type: 3}
+  - {fileID: 6162646601954717495, guid: 1ea51cb9765ba7445a3ef98cd202d62d, type: 3}
+  - {fileID: 4479147937444386971, guid: e15ff39e5f12a9e4d980dfe559e06bdb, type: 3}
+  - {fileID: 2332669256169905382, guid: 19628ce3e7968194eb588aa3c7517a98, type: 3}
+  - {fileID: 2393159934525329646, guid: 27b0f0bffc6cd01408a3618cb77e9427, type: 3}
+  - {fileID: 3707310299815154138, guid: ac41616b4e873ef479f2f1c00abeadc1, type: 3}
+  - {fileID: 956724921138847036, guid: 25cb56750bf449e458bb6b5187babe9a, type: 3}
+  - {fileID: 872358095816716364, guid: 000401c58e41a5e478ff760fca43ab1b, type: 3}
+  - {fileID: 5842712377390870463, guid: 8d7d38150c1c5884493f6a7cd6786a89, type: 3}
+  - {fileID: 5111984960400981517, guid: 886a1504450dc23449c1bd222cecc044, type: 3}
+  - {fileID: 545034083138148159, guid: e7ad35a7bfed0c349a7ee98afe982695, type: 3}
+  - {fileID: 7248345595843586028, guid: ec4244fd5a068dc40a91437051edca81, type: 3}
+  - {fileID: 6556576779202676044, guid: de6ccb382e5d6504d9587c121e066374, type: 3}
+  - {fileID: 913701501535223277, guid: c7e3474a14621524189cd07014b75661, type: 3}
+  - {fileID: 8434738225336191402, guid: 83c26774df433a74eb7832b0bb6ca8bf, type: 3}
+  - {fileID: 4756423334645754943, guid: 737214654e79c3f4cb402c0310cacb6c, type: 3}
+  - {fileID: 4527979435075373280, guid: 9b1caec109fabf845a79317afdd01791, type: 3}
+  - {fileID: 7394882599755581638, guid: f83a7c37774d63a448f2c99fe660c043, type: 3}
+  - {fileID: 5190401938817854036, guid: 42e8ef992d2a19b4397aa6c3259fbc4a, type: 3}
+  - {fileID: 3059883961452610249, guid: c22c77b9267978d42b3df0f9014941cd, type: 3}
+  - {fileID: 8471366201708614844, guid: 7130431d27fc09949862a7c1ae57ccc9, type: 3}
+  - {fileID: 5001780536432415054, guid: c4aef7bea331d5745a30b32e311fcbcd, type: 3}
+  - {fileID: 5337724889032415628, guid: 4f4ebb4a5156b954b948c96cc6274adf, type: 3}
+  - {fileID: 2586053434600000686, guid: 210e10ea4088fcc4d85fa460c000b2a8, type: 3}
+  - {fileID: 3638083292723672002, guid: 9c84c037c71cdcf4a93fa17d29e1b704, type: 3}
+  - {fileID: 4925641747332811962, guid: af1adfb8090e8d243b4365cf9e39ad8c, type: 3}
+  - {fileID: 2067653489409422452, guid: 12418dbe636be534e9da15edfa4fbce6, type: 3}
+  - {fileID: 8200349577645884953, guid: 417bc4df1bd6ad042acf65f4613aeab4, type: 3}
+  - {fileID: 5659154552780097695, guid: 15428ddbcb601bb49aab7bab8f1ad44d, type: 3}
+  IsSpawning: 1
+  UnitCount: 40
+  SpawningTime: 1
+  SpawningCooldown: 0
+  CurrentUnitCount: 0
+  CurrentEnemy: {fileID: 0}
+  Enemies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  CurrentEnemyNum: 0
