@@ -58,6 +58,11 @@ namespace KRD
 			if (SelectedCharacters.Count == 0)
 				return;
 
+			if (Input.GetButtonDown("Stop"))
+			{
+				StopFormation();
+			}
+
 			// If we press the right mouse button, let the characters go
 			if (Input.GetMouseButtonDown(1))
 			{
@@ -111,6 +116,18 @@ namespace KRD
 					character.Move(hit.point);
 					character.IsAttacking = false;
 				}
+			}
+		}
+
+		/// <summary>
+		/// Selected characters stop
+		/// </summary>
+		void StopFormation()
+		{
+			foreach (var character in SelectedCharacters)
+			{
+				character.Stop();
+				character.IsAttacking = false;
 			}
 		}
 
@@ -274,7 +291,7 @@ namespace KRD
 			}
 
 			// If there is no enabled one.
-            return null;
+			return null;
 		}
 	}
 }
