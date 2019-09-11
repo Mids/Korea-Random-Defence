@@ -8,7 +8,6 @@ namespace KRD
 	public class CommonButton : MonoBehaviour
 	{
 		private Button _button;
-		private CharacterFactory _characterFactory;
 		public Text CommonText;
 
 		private Color _color = Color.white;

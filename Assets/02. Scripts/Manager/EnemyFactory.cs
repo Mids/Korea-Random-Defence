@@ -184,19 +184,29 @@ namespace KRD
 			}
 		}
 
-		public static EnemyFactory GetEnabledEnemyFactory()
+		private static EnemyFactory _instance;
+
+		/// <summary>
+		/// Singleton
+		/// return null if failed.
+		/// </summary>
+		public static EnemyFactory GetInstance()
 		{
-			var enemyFactories = FindObjectsOfType<EnemyFactory>();
-			for (int i = 0; i < enemyFactories.Length; i++)
+			if (_instance == null)
 			{
-				if (enemyFactories[i].enabled)
+				var enemyFactories = FindObjectsOfType<EnemyFactory>();
+				for (int i = 0; i < enemyFactories.Length; i++)
 				{
-					return enemyFactories[i];
+					if (enemyFactories[i].enabled)
+					{
+						_instance = enemyFactories[i];
+						break;
+					}
 				}
 			}
-			
+
 			// If there is no enabled one.
-			return null;
+			return _instance;
 		}
 	}
 }

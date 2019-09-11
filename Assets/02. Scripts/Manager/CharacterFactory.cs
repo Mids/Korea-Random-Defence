@@ -279,19 +279,29 @@ namespace KRD
 			}
 		}
 
-		public static CharacterFactory GetEnabledCharacterFactory()
+		private static CharacterFactory _instance;
+
+		/// <summary>
+		/// Singleton
+		/// Return null if failed.
+		/// </summary>
+		public static CharacterFactory GetInstance()
 		{
-			var characterFactories = FindObjectsOfType<CharacterFactory>();
-			for (int i = 0; i < characterFactories.Length; i++)
+			if (_instance == null)
 			{
-				if (characterFactories[i].enabled)
+				var characterFactories = FindObjectsOfType<CharacterFactory>();
+				for (int i = 0; i < characterFactories.Length; i++)
 				{
-					return characterFactories[i];
+					if (characterFactories[i].enabled)
+					{
+						_instance = characterFactories[i];
+						break;
+					}
 				}
 			}
 
 			// If there is no enabled one.
-			return null;
+			return _instance;
 		}
 	}
 }

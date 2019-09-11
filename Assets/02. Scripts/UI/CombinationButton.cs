@@ -33,7 +33,7 @@ namespace KRD
 
 		private void OnClickListener()
 		{
-			var characterFactory = FindObjectOfType<CharacterFactory>();
+			var characterFactory = CharacterFactory.GetInstance();
 			bool isAllPrepared = true;
 			bool[] isPrepared = new bool[Combination.Characters.Count];
 			isPrepared[0] = true;

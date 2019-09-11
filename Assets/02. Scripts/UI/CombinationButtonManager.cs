@@ -18,7 +18,7 @@ namespace KRD
 		// Start is called before the first frame update
 		private void Init()
 		{
-			_characterFactory = CharacterFactory.GetEnabledCharacterFactory();
+			_characterFactory = CharacterFactory.GetInstance();
 			if (_characterFactory == null) return;
 
 			_buttons = new List<CombinationButton>();
