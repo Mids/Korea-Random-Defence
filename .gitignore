@@ -38,3 +38,4 @@ Assets/EffectExamples/**
 !Assets/EffectExamples/*.meta
 !Assets/EffectExamples/**/
 !Assets/EffectExamples/**/*.meta
+.idea/
