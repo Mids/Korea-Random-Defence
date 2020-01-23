@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace KRD
@@ -14,7 +15,7 @@ namespace KRD
 		public Character[] SpawnableRareCharacters;
 		public Character[] SpawnableLegendaryCharacters;
 		private List<Character> _spawnableCharacters;
-		private RTSManager _rtsManager;
+		[Inject] private IRTSManager _rtsManager = null;
 		public List<Character> CurrentCharacters = new List<Character>();
 		public List<Character> SelectedCharacters = new List<Character>();
 		public bool IsTargeting;
@@ -26,7 +27,7 @@ namespace KRD
 		// Start is called before the first frame update
 		void Start()
 		{
-			_rtsManager = GameObject.FindGameObjectWithTag("RTSManager").GetComponent<RTSManager>();
+			// _rtsManager = GameObject.FindGameObjectWithTag("RTSManager").GetComponent<RTSManager>();
 			Cursor.SetCursor(DefaultCursor, Vector2.zero, CursorMode.Auto);
 			_spawnableCharacters = new List<Character>();
 			AddSpawnableCharacters(SpawnableCommonCharacters);
@@ -45,7 +46,7 @@ namespace KRD
 				// If we release the left mouse button
 				if (Input.GetMouseButtonUp(0))
 				{
-					if (_rtsManager.IsSelecting)
+					if (_rtsManager.GetSelecting())
 					{
 						CheckSelection();
 					}

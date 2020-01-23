@@ -5,9 +5,11 @@ using UnityEngine;
 
 namespace KRD
 {
-	public class RTSManager : MonoBehaviour
+	public class RTSManager : MonoBehaviour, IRTSManager
 	{
 		public bool IsSelecting = false;
+		public bool GetSelecting() => IsSelecting;
+
 		Vector3 mousePosition1;
 		public int ScrollWidth => 15;
 		public int ScrollSpeed => 20;
